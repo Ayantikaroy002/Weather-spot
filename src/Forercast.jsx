@@ -22,8 +22,8 @@ const Forecast = ({ data }) => {
   const days = WEEK_DAYS.slice(day, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, day));
 
   return (
-    <div className="left flex flex-col w-1/2">
-      <h1 className="text-xl flex flexbox pt-14 px-6 text-gray-100 font-semibold">
+    <div className="left flex flex-col mx-5 md:mx-10 lg:mx-0 max-w-screen-xl lg:-ml-0 bg-[#153e67]  mb-11 lg:mt-11 rounded-3xl pb-5 lg:pb-0">
+      <h1 className="md:text-3xl text-xl flex flexbox pt-5 md:pt-12 px-6 text-gray-100 font-semibold">
         7-DAY FORECAST
       </h1>
       <Accordion allowZeroExpanded>
@@ -36,21 +36,21 @@ const Forecast = ({ data }) => {
               <AccordionItemHeading>
                 <AccordionItemButton>
                   <div className="grid grid-cols-3">
-                    <div className="day mx-10 text-gray-100 pt-10 text-left">
+                    <div className="day md:mx-16 mx-5 text-gray-100 md:pt-12 pt-8 text-left">
                       {days[idx]}
                     </div>
-                    <div className="mx-10 text-gray-100 pt-10 text-left">
+                    <div className="md:mx-10 mx-5 text-gray-100 pt-8 text-left">
                       <img
-                        className="h-full py-1"
+                        className=" h-20 lg:h-full py-1"
                         src={iconUrl}
                         alt="Weather icon"
                         id={`icon-${iconCode}`}
                       />
-                      <label className="description">
+                      <label className="description ml-2 md:ml-0">
                         {item.weather[0].main}
                       </label>
                     </div>
-                    <div className="min/max mx-10 text-gray-100 pt-10 text-left">
+                    <div className="min/max md:mx-16 mx-5 text-gray-100 md:pt-10 pt-8 text-left">
                       {Math.round(item.main.temp_min)}°C / {Math.round(item.main.temp_max)}°C
                     </div>
                   </div>
