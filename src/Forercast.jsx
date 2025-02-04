@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionItemHeading,
   AccordionItemButton,
-  AccordionItemPanel,
 } from "react-accessible-accordion";
 
 const WEEK_DAYS = [

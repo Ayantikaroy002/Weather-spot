@@ -16,10 +16,15 @@ function App() {
 
   const handleToggle = (toggleState) => {
     setIsFahrenheit(toggleState);
-    if (options.length > 0) {
+  
+    if (currentWeather) {
+      const { coord } = currentWeather;
+      fetchWeather(coord.lat, coord.lon, toggleState);
+    } else if (options.length > 0) {
       handleOptionsUpdate(options, toggleState);
     }
   };
+  
 
   const handleOptionsUpdate = async (newOptions, toggleState = isFahrenheit) => {
     setOptions(newOptions);
@@ -51,7 +56,6 @@ function App() {
     }
   };
 
-  // Get User Location and Fetch Weather
   const handleGetLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(

@@ -20,8 +20,6 @@ const Navbar = ({ onOptionsUpdate }) => {
       }));
   
       onOptionsUpdate(options);
-      
-      // Clear the input field after fetching data
       setSearch('');
   
     } catch (error) {

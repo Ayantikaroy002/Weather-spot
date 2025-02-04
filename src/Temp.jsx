@@ -23,7 +23,6 @@ const Temp = ({ onGetLocation }) => {
             </div>
             <h1 className='ml-8 pt-2 text-xs'>Map</h1>
           </div>
-          {/* Centered "Your Location" Button */}
           <div className="text-gray-100 flex flex-col items-center cursor-pointer mt-10" onClick={onGetLocation}>
             <FaLocationDot className="text-3xl" />
             <h1 className="pt-2 text-center text-xs">Your Location</h1>
