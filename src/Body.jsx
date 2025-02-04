@@ -1,21 +1,24 @@
 import React from "react";
 
-const Body = ({ data }) => {
+const Body = ({ data, isFahrenheit }) => {
   const iconCode = data.weather[0].icon;
   const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
+  const convertTemp = (temp) => (isFahrenheit ? (temp * 9) / 5 + 32 : temp);
+  const unit = isFahrenheit ? "°F" : "°C";
+
   return (
-    <div className="slider w-full lg:max-w-screen-sm flex flex-col my-5 lg:my-11 lg:mx-5">
+    <div className="slider w-full lg:max-w-screen-sm flex flex-col my-5 lg:mt-7 lg:mb-11 lg:mx-5">
       <div className="flex flex-row mx-5 md:mx-10 lg:mx-0 bg-[#153e67] pb-5 lg:pb-11 rounded-3xl">
         <div className="left flex flex-col justify-center w-full">
           <h1 className="lg:text-7xl md:text-7xl text-xl mx-4  pt-5 lg:pt-10 text-gray-100 px-6 font-semibold">
             {data.name}
           </h1>
           <p className="text-gray-100 lg:text-xl md:text-xl text-sm pl-10 pt-2 lg:pt-5 md:pt-2">
-            {data.weather[0].description}, Feels like {data.main.feels_like}°C
+            {data.weather[0].description}, Feels like {Math.round(convertTemp(data.main.feels_like))}{unit}
           </p>
           <p className="lg:text-5xl text-xl mx-4  text-gray-100 pl-6 pt-2 lg:pt-14  text-left">
-            {data.main.temp} °C
+            {Math.round(convertTemp(data.main.temp))} {unit}
           </p>
         </div>
         <div className="right flex flex-row  w-2/3 ml-5 lg:ml-10">
@@ -41,13 +44,13 @@ const Body = ({ data }) => {
           <div className="p-6 flex flex-col items-center w-full pl-9 md:pl-20">
             <img className="h-10 w-10" src="../thermometer.png" alt="" />
             <p className="text-md lg:text-2xl text-gray-100 py-2">Max</p>
-            <p className="lg:text-2xl text-gray-100">{data.main.temp_max} °C</p>
+            <p className="lg:text-2xl text-gray-100">{Math.round(convertTemp(data.main.temp_max))} {unit}</p>
           </div>
 
           <div className="p-6 flex flex-col items-center w-full pl-14 md:pl-16">
             <img className="h-10 w-10" src="../thermometer.png" alt="" />
             <p className="text-md lg:text-2xl text-gray-100 py-2">Min</p>
-            <p className="lg:text-2xl text-gray-100">{data.main.temp_min} °C</p>
+            <p className="lg:text-2xl text-gray-100">{Math.round(convertTemp(data.main.temp_min))} {unit}</p>
           </div>
 
           <div className="p-6 flex flex-col items-center w-full pl-9 md:pl-20">
